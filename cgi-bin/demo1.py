@@ -5,6 +5,7 @@ import _judger
 import os
 import subprocess
 
+#测试一下
 build_cmd = {
         "gcc"    : "sudo gcc main.c -o main -Wall -lm -O2 -std=c99 --static -DONLINE_JUDGE",
         "g++"    : "g++ main.cpp -O2 -Wall -lm --static -DONLINE_JUDGE -o main",
