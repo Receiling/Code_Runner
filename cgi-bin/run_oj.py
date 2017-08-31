@@ -2,13 +2,8 @@
 # -*- coding: UTF-8 -*-
 
 import _judger
-import os
 
-def run(code_id):
-  
-    if os.system("gcc main.c -o main"):
-        print("compile error")
-        return 0
+def run(exe_file, input_file, output_file, error_file,  language):  
 
     ret = _judger.run(max_cpu_time=1000,
                   max_real_time=2000,
@@ -17,19 +12,17 @@ def run(code_id):
                   max_output_size=10000,
                   max_stack=32 * 1024 * 1024,
                   # five args above can be _judger.UNLIMITED
-                  exe_path= "main",
-                  input_path="1.in",
-                  output_path="/dev/stdout",
-                  error_path="/dev/stderr",
+                  exe_path= exe_file,
+                  input_path= input_file,
+                  output_path=output_file,
+                  error_path=error_file,
                   args=[],
                   # can be empty list
                   env=[],
-                  log_path="judger.log",
+                  log_path="judger_log/judger.log",
                   # can be None
-                  seccomp_rule_name="c_cpp",
+                  seccomp_rule_name=language,
                   uid=0,
                   gid=0)
     return ret
-
-print run(1)
 
